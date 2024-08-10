@@ -21,28 +21,28 @@ namespace EFDBFirst
         {
             InitializeComponent();
         }
-
+         //10 cheap
         private void button2_Click(object sender, EventArgs e)
         {
             var result = _db.Products.OrderBy(q => q.UnitPrice).Take(10)
                 .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice });
             dataGridView1.DataSource = result.ToList();
         }
-
+         //3top expensive product
         private void btnGet3TopExpensive_Click(object sender, EventArgs e)
         {
          var result = _db.Products.OrderByDescending(q => q.UnitPrice).Take(3)
                 .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice });
             dataGridView1.DataSource = result.ToList();
         }
-
+         //forth expensive product
         private void btnGetFourthExpensive_Click(object sender, EventArgs e)
         {
             var result =  _db.Products.OrderByDescending(q => q.UnitPrice).Skip(3).Take(1)
                 .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice });
             dataGridView1.DataSource = result.ToList(); 
         }
-
+         //total product
         private void btnTotalProduct_Click(object sender, EventArgs e)
         {
             var result = _db.Products.OrderBy(q => q.ProductName)
@@ -50,17 +50,7 @@ namespace EFDBFirst
             dataGridView1.DataSource=result.ToList();   
 
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            createpagination();
-        }
-
+        //pagination
         private void createpagination()
         {
             int totalCount = _db.Products.Count();
