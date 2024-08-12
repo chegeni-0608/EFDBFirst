@@ -21,18 +21,18 @@ namespace EFDBFirst
         {
             InitializeComponent();
         }
-         //10 cheap
+        //10 cheap
         private void button2_Click(object sender, EventArgs e)
         {
             var result = _db.Products.OrderBy(q => q.UnitPrice).Take(10)
                 .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice });
             dataGridView1.DataSource = result.ToList();
         }
-         //3top expensive product
+        //3top expensive product
         private void btnGet3TopExpensive_Click(object sender, EventArgs e)
         {
          var result = _db.Products.OrderByDescending(q => q.UnitPrice).Take(3)
-                .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice });
+                .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice});
             dataGridView1.DataSource = result.ToList();
         }
          //forth expensive product
@@ -50,17 +50,23 @@ namespace EFDBFirst
             dataGridView1.DataSource=result.ToList();   
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+         createpagination();
+        }
+
         //pagination
         private void createpagination()
         {
             int totalCount = _db.Products.Count();
-            int pagecount = Convert.ToInt32(Math.Ceiling((decimal)totalCount / _pageItemCount));
+            int pageCount = Convert.ToInt32(Math.Ceiling((decimal)totalCount / _pageItemCount));
 
-            for(int i = 1; i <= pagecount; i++)
+            for(int i = 1; i <= pageCount; i++)
             {
                 var button = new Button(); 
                 button.Text = i.ToString();
-                button.Tag = i;
+                button.Tag = i; 
                 button.Width = 30;
                 button.Location = new Point((i * 30) + 20, 18);
                 button.Click += Pagination_Click;
@@ -70,7 +76,16 @@ namespace EFDBFirst
 
         private void Pagination_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(((Button)sender).Tag.ToString());
+            var page = Convert.ToInt32(((Button)sender).Tag);
+            FillGridView(page);
+        }
+        private void FillGridView(int page = 1)
+        {
+            var result = _db.Products.OrderBy(q => q.ProductId).Skip((page - 1) * _pageItemCount).Take(_pageItemCount)
+                .Select(q => new { q.ProductId, q.ProductName, q.Category.CategoryName, q.UnitPrice });
+            dataGridView1.DataSource = result.ToList();
+
+
         }
     }
 }

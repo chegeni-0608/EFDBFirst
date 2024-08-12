@@ -119,6 +119,7 @@
             this.Controls.Add(this.btnGet3TopExpensive);
             this.Name = "Form1";
             this.Text = "EFDbFirst";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
