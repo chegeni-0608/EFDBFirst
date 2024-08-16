@@ -1,5 +1,6 @@
 ﻿using EFDBFirst.Data;
 using EFDBFirst.Models;
+using EFDBFirst.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,14 +121,39 @@ namespace EFDBFirst
 
         private void btnEployeeListBirthDate1964To1999_Click(object sender, EventArgs e)
         {
-            var repository = new GenericRepository<Employee>();
-            var result = repository.GetAsQueryable(
-                  q => q.BirthDate.Value.Year >= 1964 && q.BirthDate.Value.Year <= 1999,
-                  q.orderbyDecsending(p => p.BirthDate))
-                .Select(q => new { q.FatherName, q.LastName, q.BirthDate, q.CityOfBirth });
+            try
+            {
+                var repository = new GenericRepository<Employee>();
+                var result = repository.GetAsQueryable(
+                      q => q.BirthDate.Value.Year >= 1964 && q.BirthDate.Value.Year <= 1999,
+                      q.orderbyDecsending(p => p.BirthDate))
+                    .Select(q => new { q.FatherName, q.LastName, q.BirthDate, q.CityOfBirth });
 
-            dataGridView1.DataSource = result.ToList();
-                
+                dataGridView1.DataSource = result.ToList();
+            }
+            catch (OverflowException ex)
+            {
+
+            }
+            catch (FieldAccessException ex)
+            {
+
+            }
+             catch (Exception ex) //Global Exeption Handeling
+            {
+                //1
+                // نوشبن اطلاعات خطا در لاک فایل
+                Logger.Error(ex);
+                //2
+                //نمایش پیام یارفنار مناسب به کاربر
+                MessageBox.Show("خطا در نمایش اطلاعات");
+            }
+             
+            finally
+            {
+                // در هر حالتی کدهای داخل ان  اجرا میشود
+            }
+
         }
     }
 }
