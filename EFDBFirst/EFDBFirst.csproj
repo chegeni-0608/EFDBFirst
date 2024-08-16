@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\GenericRepository.cs" />
+    <Compile Include="Data\GenericRepositoryBase.cs" />
+    <Compile Include="Data\GenericRepositoryBaseBase.cs" />
+    <Compile Include="Data\GenericRepositoryBaseBase1.cs" />
+    <Compile Include="Data\GenericRepositoryBaseBase2.cs" />
+    <Compile Include="Data\T.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CsharpSampleDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>CsharpSampleDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>CsharpSampleDBModel.tt</DependentUpon>

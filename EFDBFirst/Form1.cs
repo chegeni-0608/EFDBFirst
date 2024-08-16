@@ -1,4 +1,5 @@
-﻿using EFDBFirst.Models;
+﻿using EFDBFirst.Data;
+using EFDBFirst.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +16,11 @@ namespace EFDBFirst
     {
         CsharpSampleDBEntities _db = new CsharpSampleDBEntities();
 
-        int _pageItemCount = 10;
+        int _pageItemCount = 5;
         int _currentPage = 1;
+
+        public object GenericRipository { get; private set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -86,6 +90,44 @@ namespace EFDBFirst
             dataGridView1.DataSource = result.ToList();
 
 
+        }
+
+        private void btnInsertWithGenericRepository_Click(object sender, EventArgs e)
+        {
+            var item = new Product
+            {
+                CategoryId = 1,
+                ProductName = "Test With Ripo",
+                UnitPrice = 100
+            };
+
+            var repository = new GenericRepository<Product>();
+            repository.Insert(item);
+        }
+
+        private void btnGetTop10_Click(object sender, EventArgs e)
+        {
+            var repository = new GenericRepository<Product>();
+            var result = repository.GetAsQueryable(
+                q => q.CategoryId != 1, //where
+                q => q.OrderByDescending(p => p.UnitPrice), //order
+                pageItemCount: 12, //take
+                currentPage:2 //skip(page 2)
+                ).Select(q => new { q.CategoryId, q.ProductName, q.UnitPrice });
+
+            dataGridView1.DataSource=result.ToList();
+        }
+
+        private void btnEployeeListBirthDate1964To1999_Click(object sender, EventArgs e)
+        {
+            var repository = new GenericRepository<Employee>();
+            var result = repository.GetAsQueryable(
+                  q => q.BirthDate.Value.Year >= 1964 && q.BirthDate.Value.Year <= 1999,
+                  q.orderbyDecsending(p => p.BirthDate))
+                .Select(q => new { q.FatherName, q.LastName, q.BirthDate, q.CityOfBirth });
+
+            dataGridView1.DataSource = result.ToList();
+                
         }
     }
 }

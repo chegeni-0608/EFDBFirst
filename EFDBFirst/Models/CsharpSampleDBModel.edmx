@@ -4,13 +4,27 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CsharpSampleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CsharpSampleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="nchar" MaxLength="10" />
+          <Property Name="Mobile" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="CityOfBirth" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -41,14 +55,14 @@
         </Association>
         <EntityContainer Name="CsharpSampleDBModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CsharpSampleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -95,7 +109,22 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="Employees" EntityType="CsharpSampleDBModel.Employee" />
         </EntityContainer>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Mobile" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CityOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -123,6 +152,21 @@
                 <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
                 <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
                 <ScalarProperty Name="Discontinued" ColumnName="Discontinued" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CsharpSampleDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="CityOfBirth" ColumnName="CityOfBirth" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

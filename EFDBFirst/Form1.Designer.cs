@@ -35,6 +35,9 @@
             this.btnGetFourthExpensive = new System.Windows.Forms.Button();
             this.btnTotalProduct = new System.Windows.Forms.Button();
             this.gbPagination = new System.Windows.Forms.GroupBox();
+            this.btnInsertWithGenericRepository = new System.Windows.Forms.Button();
+            this.btnGetTop10 = new System.Windows.Forms.Button();
+            this.btnEployeeListBirthDate1964To1999 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,11 +108,44 @@
             this.gbPagination.TabStop = false;
             this.gbPagination.Text = "Pagination";
             // 
+            // btnInsertWithGenericRepository
+            // 
+            this.btnInsertWithGenericRepository.Location = new System.Drawing.Point(12, 226);
+            this.btnInsertWithGenericRepository.Name = "btnInsertWithGenericRepository";
+            this.btnInsertWithGenericRepository.Size = new System.Drawing.Size(212, 39);
+            this.btnInsertWithGenericRepository.TabIndex = 7;
+            this.btnInsertWithGenericRepository.Text = "Insert With Generic Repository";
+            this.btnInsertWithGenericRepository.UseVisualStyleBackColor = true;
+            this.btnInsertWithGenericRepository.Click += new System.EventHandler(this.btnInsertWithGenericRepository_Click);
+            // 
+            // btnGetTop10
+            // 
+            this.btnGetTop10.Location = new System.Drawing.Point(12, 271);
+            this.btnGetTop10.Name = "btnGetTop10";
+            this.btnGetTop10.Size = new System.Drawing.Size(212, 39);
+            this.btnGetTop10.TabIndex = 8;
+            this.btnGetTop10.Text = "Get Top 10 Cheap without Category =1";
+            this.btnGetTop10.UseVisualStyleBackColor = true;
+            this.btnGetTop10.Click += new System.EventHandler(this.btnGetTop10_Click);
+            // 
+            // btnEployeeListBirthDate1964To1999
+            // 
+            this.btnEployeeListBirthDate1964To1999.Location = new System.Drawing.Point(12, 332);
+            this.btnEployeeListBirthDate1964To1999.Name = "btnEployeeListBirthDate1964To1999";
+            this.btnEployeeListBirthDate1964To1999.Size = new System.Drawing.Size(212, 39);
+            this.btnEployeeListBirthDate1964To1999.TabIndex = 9;
+            this.btnEployeeListBirthDate1964To1999.Text = "لیست کارمندان  از سال 1964 تا 1999";
+            this.btnEployeeListBirthDate1964To1999.UseVisualStyleBackColor = true;
+            this.btnEployeeListBirthDate1964To1999.Click += new System.EventHandler(this.btnEployeeListBirthDate1964To1999_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 450);
+            this.Controls.Add(this.btnEployeeListBirthDate1964To1999);
+            this.Controls.Add(this.btnGetTop10);
+            this.Controls.Add(this.btnInsertWithGenericRepository);
             this.Controls.Add(this.gbPagination);
             this.Controls.Add(this.btnTotalProduct);
             this.Controls.Add(this.btnGetFourthExpensive);
@@ -135,6 +171,9 @@
         private System.Windows.Forms.Button btnGetFourthExpensive;
         private System.Windows.Forms.Button btnTotalProduct;
         private System.Windows.Forms.GroupBox gbPagination;
+        private System.Windows.Forms.Button btnInsertWithGenericRepository;
+        private System.Windows.Forms.Button btnGetTop10;
+        private System.Windows.Forms.Button btnEployeeListBirthDate1964To1999;
     }
 }
 
