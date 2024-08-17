@@ -155,5 +155,17 @@ namespace EFDBFirst
             }
 
         }
+
+        private void btnEncrypt_Click(object sender, EventArgs e)
+        {
+            var encryptText = EncryptionUtility.Encypt(txtInput.Text);
+            txtOutput.Text = (string)encryptText;
+        }
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {
+            var decryptText = EncryptionUtility.Encypt(txtInput.Text);
+            MessageBox.Show("decryptText");
+        }
     }
 }

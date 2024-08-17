@@ -8,19 +8,26 @@ namespace EFDBFirst.Utility
 {
     public static class EncryptionUtility
     {
-        public static string MD5Hash(string input)
-        {
+        public static object Encypt { get; internal set; }
 
-        }
+        //public static string MD5Hash(string input)
+        //{
 
-        public static string SHA128Hash(string input)
-        {
+        //}
 
-        }
+        //public static string SHA128Hash(string input)
+        //{
 
-        public static string SHA256Hash(string input)
-        {
+        //}
 
-        }
+        //public static string SHA256Hash(string input)
+        //{
+
+        //}
+
+        //internal static object Encypt(string text)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

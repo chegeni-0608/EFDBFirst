@@ -38,6 +38,12 @@
             this.btnInsertWithGenericRepository = new System.Windows.Forms.Button();
             this.btnGetTop10 = new System.Windows.Forms.Button();
             this.btnEployeeListBirthDate1964To1999 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtInput = new System.Windows.Forms.TextBox();
+            this.btnEncrypt = new System.Windows.Forms.Button();
+            this.btnDecrypt = new System.Windows.Forms.Button();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,11 +144,69 @@
             this.btnEployeeListBirthDate1964To1999.UseVisualStyleBackColor = true;
             this.btnEployeeListBirthDate1964To1999.Click += new System.EventHandler(this.btnEployeeListBirthDate1964To1999_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(300, 290);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Input:";
+            // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(340, 289);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(299, 20);
+            this.txtInput.TabIndex = 11;
+            // 
+            // btnEncrypt
+            // 
+            this.btnEncrypt.Location = new System.Drawing.Point(645, 286);
+            this.btnEncrypt.Name = "btnEncrypt";
+            this.btnEncrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnEncrypt.TabIndex = 12;
+            this.btnEncrypt.Text = "Encrypt";
+            this.btnEncrypt.UseVisualStyleBackColor = true;
+            this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
+            // 
+            // btnDecrypt
+            // 
+            this.btnDecrypt.Location = new System.Drawing.Point(772, 333);
+            this.btnDecrypt.Name = "btnDecrypt";
+            this.btnDecrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnDecrypt.TabIndex = 15;
+            this.btnDecrypt.Text = "Decrypt";
+            this.btnDecrypt.UseVisualStyleBackColor = true;
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
+            // 
+            // txtOutput
+            // 
+            this.txtOutput.Location = new System.Drawing.Point(340, 332);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(426, 20);
+            this.txtOutput.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(292, 332);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Output:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 450);
+            this.Controls.Add(this.btnDecrypt);
+            this.Controls.Add(this.txtOutput);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnEncrypt);
+            this.Controls.Add(this.txtInput);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEployeeListBirthDate1964To1999);
             this.Controls.Add(this.btnGetTop10);
             this.Controls.Add(this.btnInsertWithGenericRepository);
@@ -174,6 +238,12 @@
         private System.Windows.Forms.Button btnInsertWithGenericRepository;
         private System.Windows.Forms.Button btnGetTop10;
         private System.Windows.Forms.Button btnEployeeListBirthDate1964To1999;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.Button btnEncrypt;
+        private System.Windows.Forms.Button btnDecrypt;
+        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.Label label3;
     }
 }
 
